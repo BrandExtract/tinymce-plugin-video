@@ -4,8 +4,14 @@
   "description": "A TinyMCE plugin to embed a video",
   "main": "plugin.js",
   "scripts": {
+    "build": "node_modules/.bin/uglifyjs --compress properties,dead_code --mangle --output plugin.min.js --source-map plugin.js.map plugin.js",
+    "git": "git add plugin.js.map plugin.min.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "pre-commit": [
+    "build",
+    "git"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BrandExtract/tinymce-plugin-video.git"
@@ -22,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/BrandExtract/tinymce-plugin-video/issues"
   },
-  "homepage": "https://github.com/BrandExtract/tinymce-plugin-video#readme"
+  "homepage": "https://github.com/BrandExtract/tinymce-plugin-video#readme",
+  "devDependencies": {
+    "pre-commit": "^1.2.2",
+    "uglify-js": "^2.7.5"
+  }
 }
