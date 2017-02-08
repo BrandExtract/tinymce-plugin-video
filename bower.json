@@ -1,0 +1,24 @@
+{
+  "name": "tinymce-plugin-video",
+  "description": "A TinyMCE plugin to embed a video",
+  "main": "plugin.js",
+  "authors": [
+    "BrandExtract"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "TinyMCE",
+    "plugin",
+    "video",
+    "YouTube",
+    "Vimeo"
+  ],
+  "homepage": "https://github.com/BrandExtract/tinymce-plugin-video",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
