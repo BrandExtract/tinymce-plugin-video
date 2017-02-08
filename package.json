@@ -1,0 +1,26 @@
+{
+  "name": "tinymce-plugin-video",
+  "version": "0.1.0",
+  "description": "A TinyMCE plugin to embed a video",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandExtract/tinymce-plugin-video.git"
+  },
+  "keywords": [
+    "TinyMCE",
+    "plugin",
+    "video",
+    "YouTube",
+    "Vimeo"
+  ],
+  "author": "BrandExtract",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandExtract/tinymce-plugin-video/issues"
+  },
+  "homepage": "https://github.com/BrandExtract/tinymce-plugin-video#readme"
+}
