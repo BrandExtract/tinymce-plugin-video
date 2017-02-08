@@ -19,3 +19,24 @@ tinymce.init({
 });
 </script>
 ```
+
+## Development
+
+### TL;DR
+
+```bash
+git clone https://github.com/BrandExtract/tinymce-plugin-video.git
+cd tinymce-plugin-video
+npm install
+```
+
+Edit the file, add and commit.
+
+### Why not edit the file directly on GitHub
+
+There is a `pre-commit` hook that is automatically installed after
+`npm install` and generates the minified file and sourcemap. Therefore,
+it is recommended that we checkout the repo and run `npm install` to
+work on it, instead of editing the file directly through GitHub web.
+
+Otherwise, we will need to generate the minified file and sourcemap.
