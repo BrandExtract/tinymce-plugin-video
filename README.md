@@ -4,8 +4,8 @@ Embed a video into the content.
 
 ## Installation
 
-* `bower|npm` `install https://github.com/BrandExtract/tinymce-plugin-video.git --save`
-* Move to `tinymce/plugins` folder through build scripts.
+* `npm install @brandextract/tinymce-plugin-video` or `bower install tinymce-plugin-video`
+* Move to a folder named "vide" under tinymce/plugins through build scripts.
 
 ## Configuration
 
@@ -22,7 +22,7 @@ tinymce.init({
 
 ## Development
 
-### TL;DR
+### The short version
 
 ```bash
 git clone https://github.com/BrandExtract/tinymce-plugin-video.git
@@ -32,7 +32,7 @@ npm install
 
 Edit the file, add and commit.
 
-### Why not edit the file directly on GitHub
+### Longer version, or why not edit the file directly on GitHub
 
 There is a `pre-commit` hook that is automatically installed after
 `npm install` and generates the minified file and sourcemap. Therefore,

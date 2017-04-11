@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TinyMCE Video plugin</title>
+</head>
+<body>
+
+  <div class="page-container">
+    <main>
+      <h1>TinyMCE Video plugin</h1>
+      <p>Embed a video into the content.</p>
+      <textarea>
+        <p>
+          <iframe src="//www.youtube.com/embed/8hl75Hx90ZY" width="400" height="300" />
+        </p>
+        <p>&nbsp;</p>
+      </textarea>
+    </main>
+  </div>
+
+  <script src="./scripts/tinymce/tinymce.min.js"></script>
+
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      height: 500,
+      plugins: [
+        'code media video',
+      ],
+      toolbar: 'media video',
+      extended_valid_elements: "+iframe[src|width|height|name|align|class]"
+    });
+  </script>
+</body>
+</html>
