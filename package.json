@@ -4,14 +4,15 @@
   "description": "A TinyMCE plugin to embed a video",
   "main": "plugin.js",
   "scripts": {
-    "build": "node_modules/.bin/uglifyjs --compress properties,dead_code --mangle --source-map --output plugin.min.js plugin.js",
-    "docs": "cp -r plugin.min.js.map plugin.min.js img docs/scripts/tinymce/plugins/video",
+    "build": "esbuild plugin.js --target=es6 --minify --bundle --allow-overwrite --sourcemap --outfile=plugin.min.js",
+    "dev": "npm run build;npm run tinymce;npm run docs;",
+    "tinymce": "cp -r node_modules/tinymce docs/scripts",
+    "docs": "mkdir -p docs/scripts/plugins/video && cp -r plugin.min.js.map plugin.min.js docs/scripts/plugins/video",
     "git": "git add -u",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "pre-commit": [
     "build",
-    "docs",
     "git"
   ],
   "repository": {
@@ -32,7 +33,8 @@
   },
   "homepage": "https://github.com/BrandExtract/tinymce-plugin-video#readme",
   "devDependencies": {
+    "esbuild": "^0.19.11",
     "pre-commit": "^1.2.2",
-    "uglify-js": "^3.17.4"
+    "tinymce": "^6.8.2"
   }
 }

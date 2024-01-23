@@ -76,47 +76,12 @@
     plugin.currentProvider = null;
     this.configs = {};
 
-    this.configs["unknown"] = {
+    const baseConfig = {
       title: "Insert a video",
       initialData: {},
       body: {
         type: "panel",
-        items: [
-          {
-            type: "input",
-            label: "Source",
-            name: "url",
-          },
-          {
-            type: "grid",
-            columns: 3,
-            items: [
-              {
-                type: "input",
-                label: "Width",
-                name: "width",
-              },
-              {
-                type: "input",
-                label: "Height",
-                name: "height",
-              },
-              {
-                type: "checkbox",
-                label: "Fullscreen",
-                name: "fullscreen",
-              }
-            ]
-          },
-          {
-            type: "htmlpanel",
-            html: "<div id='options'></div>",
-          },
-          {
-            type: "htmlpanel",
-            html: "<div id='preview'></div>",
-          }
-        ]
+        items: []
       },
       buttons: [
         {
@@ -141,155 +106,110 @@
       }
     };
 
-    this.configs["youtube"] = {
-      title: "Insert a video",
-      initialData: {},
-      body: {
-        type: "panel",
+    const sharedFields = [
+      {
+        type: "input",
+        label: "Source",
+        name: "url",
+      },
+      {
+        type: "grid",
+        columns: 3,
         items: [
           {
             type: "input",
-            label: "Source",
-            name: "url",
+            label: "Width",
+            name: "width",
           },
           {
-            type: "grid",
-            columns: 3,
-            items: [
-              {
-                type: "input",
-                label: "Width",
-                name: "width",
-              },
-              {
-                type: "input",
-                label: "Height",
-                name: "height",
-              },
-              {
-                type: "checkbox",
-                label: "Fullscreen",
-                name: "fullscreen",
-              }
-            ]
+            type: "input",
+            label: "Height",
+            name: "height",
           },
           {
             type: "checkbox",
-            label: "Show suggested videos when the video finishes",
-            name: "rel",
-          },
-          {
-            type: "checkbox",
-            label: "Show player controls",
-            name: "controls",
-          },
-          {
-            type: "checkbox",
-            label: "Show video title and player actions",
-            name: "showinfo",
-          },
-          {
-            type: "htmlpanel",
-            html: "<div id='preview'></div>",
+            label: "Fullscreen",
+            name: "fullscreen",
           }
         ]
       },
-      buttons: [
+    ];
+
+    const unkownFields = [ ...sharedFields, ...[
         {
-          type: "cancel",
-          name: "cancel",
-          text: "Cancel"
+          type: "htmlpanel",
+          html: "<div id='preview'></div>",
+        }
+      ]
+    ];
+
+    const youtubeFields = [ ...sharedFields, ...[
+        {
+          type: "checkbox",
+          label: "Show suggested videos when the video finishes",
+          name: "rel",
         },
         {
-          type: "submit",
-          name: "save",
-          text: "Save",
-          primary: true
+          type: "checkbox",
+          label: "Show player controls",
+          name: "controls",
+        },
+        {
+          type: "checkbox",
+          label: "Show video title and player actions",
+          name: "showinfo",
+        },
+        {
+          type: "htmlpanel",
+          html: "<div id='preview'></div>",
         }
-      ],
-      onChange: function onChange(api) {
-        plugin.providerChange(api);
-        plugin.render();
-      },
-      onSubmit: function onSubmit(api) {
-        plugin.onsubmit();
-        api.close();
+      ]
+    ];
+
+    const vimeoFields = [ ...sharedFields, ...[
+        {
+          type: "checkbox",
+          label: "Show portrait in overlay",
+          name: "portrait",
+        },
+        {
+          type: "checkbox",
+          label: "Show title in overlay",
+          name: "title",
+        },
+        {
+          type: "checkbox",
+          label: "Show byline in overlay",
+          name: "byline",
+        },
+        {
+          type: "htmlpanel",
+          html: "<div id='preview'></div>",
+        }
+      ]
+    ];
+
+    this.configs["unknown"] = { ...baseConfig, ...{
+        body: {
+          type: "panel",
+          items: unkownFields
+        }
       }
     };
 
-    this.configs["vimeo"] = {
-      title: "Insert a video",
-      initialData: {},
-      body: {
-        type: "panel",
-        items: [
-          {
-            type: "input",
-            label: "Source",
-            name: "url",
-          },
-          {
-            type: "grid",
-            columns: 3,
-            items: [
-              {
-                type: "input",
-                label: "Width",
-                name: "width",
-              },
-              {
-                type: "input",
-                label: "Height",
-                name: "height",
-              },
-              {
-                type: "checkbox",
-                label: "Fullscreen",
-                name: "fullscreen",
-              }
-            ]
-          },
-          {
-            type: "checkbox",
-            label: "Show portrait in overlay",
-            name: "portrait",
-          },
-          {
-            type: "checkbox",
-            label: "Show title in overlay",
-            name: "title",
-          },
-          {
-            type: "checkbox",
-            label: "Show byline in overlay",
-            name: "byline",
-          },
-          {
-            type: "htmlpanel",
-            html: "<div id='preview'></div>",
-          }
-        ]
-      },
-      buttons: [
-        {
-          type: "cancel",
-          name: "cancel",
-          text: "Cancel"
-        },
-        {
-          type: "submit",
-          name: "save",
-          text: "Save",
-          primary: true
+    this.configs["youtube"] = { ...baseConfig, ...{
+        body: {
+          type: "panel",
+          items: youtubeFields
         }
-      ],
-      onChange: function onChange(api) {
-        plugin.providerChange(api);
-        plugin.render();
-      },
-      onSubmit: function onSubmit(api) {
-        plugin.onsubmit();
-        api.close();
+      }
+    };
+
+    this.configs["vimeo"] = { ...baseConfig, ...{
+        body: {
+          type: "panel",
+          items: vimeoFields
+        }
       }
     };
 
