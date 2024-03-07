@@ -1,6 +1,6 @@
 {
   "name": "@brandextract/tinymce-plugin-video",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A TinyMCE plugin to embed a video",
   "main": "plugin.js",
   "scripts": {
